@@ -12,10 +12,13 @@
 <body>
     <div class="container">
         <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Сохранить</button>
-</form>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-m">Сохранить</button>
+        </form>
+        <div class="mt-5">
+            <a href="/" class="btn btn-success btn-sm">На главную</a>
+        </div>
     </div>
 
 
