@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200, verbose_name='Заголовок')),
-                ('status', models.CharField(choices=[('new', 'Новая'), ('in_progress', 'В процессе'), ('done', 'Сделано')], default='new', max_length=20)),
+                ('status', models.CharField(choices=[('new', 'Новое'), ('in_progress', 'В процессе'), ('done', 'Сделано')], default='new', max_length=20)),
                 ('deadline', models.DateField(blank=True, max_length=100, null=True, verbose_name='Срок выполнения')),
             ],
             options={
                 'verbose_name': 'Задание',
-                'db_table': 'Задание',
+                'db_table': 'Задания',
             },
         ),
     ]
