@@ -5,6 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div>
+        {% for task in tasks %}
+        <div>
+            <p>{{task.title}}</p>
+            <p>{{task.status}}</p>
+            <p>{{task.deadline}}</p>
+        </div>
+         {% empty %}
+            <p>Нет данных</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
