@@ -1,7 +1,6 @@
 from django import forms
 from .models import Task
 
-from datetime import datetime
 
 class TaskForm(forms.ModelForm):
     class Meta:

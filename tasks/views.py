@@ -7,8 +7,8 @@ from tasks.forms import TaskForm
 
 def tasks(request):
     tasks = Task.objects.all()
-    context = {'tasks': tasks}
-    return render(request, 'tasks.html', context)
+    context = {'tasks.json': tasks}
+    return render(request, 'tasks.json.html', context)
 
 def create_task(request):
     if request.method == 'POST':
