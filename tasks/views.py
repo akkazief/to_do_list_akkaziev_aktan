@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 
 from tasks.models import Task
 from tasks.forms import TaskForm
@@ -23,4 +23,4 @@ def create_task(request):
 def delete_task(request, pk):
     task = Task.objects.get(id=pk)
     task.delete()
-    return HttpResponseRedirect('/')
+    return Redirect('/')
