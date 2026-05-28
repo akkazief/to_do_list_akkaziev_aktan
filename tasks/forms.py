@@ -10,6 +10,10 @@ class TaskForm(forms.ModelForm):
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите ваше описание',}),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Поле для детального описания'
+            }),
             'status': forms.Select(attrs={
                 'class': 'form-control',
             }),
