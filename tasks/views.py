@@ -6,7 +6,7 @@ from tasks.forms import TaskForm
 
 def tasks(request):
     tasks = Task.objects.all()
-    context = {'tasks.json': tasks}
+    context = {'tasks': tasks}
     return render(request, 'tasks.html', context)
 
 def create_task(request):
@@ -19,7 +19,7 @@ def create_task(request):
         form = TaskForm()
     return render(request, 'create_task.html', {'form': form})
 
-def delete_task(request, pk):
+def delete_task(pk):
     task = Task.objects.get(id=pk)
     task.delete()
     return redirect('/')
