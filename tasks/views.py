@@ -45,8 +45,9 @@ def update_task(request, pk):
     return render(request, 'tasks/task_update.html', {'form': form, 'task': task})
 
 
-def delete_task(request, pk, *args, **kwargs):
+def delete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
     if request.method == 'POST':
-        article = get_object_or_404(Task, pk=pk)
-        article.delete()
-    return redirect("main")
+        task.delete()
+        return redirect('main')
+    return render(request, 'tasks/delete_task.html', {'task': task})
