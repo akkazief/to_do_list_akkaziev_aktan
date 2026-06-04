@@ -1,18 +1,15 @@
 {% extends "base.html" %}
-{% load django_bootstrap5 %}
 
 {% block content %}
     <div class="card my-5">
         <div class="card-header fs-4 text-center py-3">Создание статьи</div>
         <div class="card-body">
-{#            {% include 'partial/article_form.html' with action=action %}#}
-            <form action="" id="article-form" method="POST">
-                {% csrf_token %}
-                {% bootstrap_form form layout="floating" %}
-            </form>
+{#            {% include 'partial/task_form.html' %}
         </div>
         <div class="card-footer text-end py-3">
-            <button type="submit" form="article-form" class="btn btn-sm btn-primary">Сохранить</button>
+            <a href="{% url 'details' task.pk %}" class="btn btn-sm btn-secondary me-2">Отмена</a>
+            <button type="submit" form="task-form" class="btn btn-sm btn-primary">Сохранить</button>
         </div>
+
     </div>
 {% endblock %}
