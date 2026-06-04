@@ -6,9 +6,12 @@
 
 {% block content %}
 <div>
+    <form method="POST">
+        {% csrf_token %}
     <table class="table table-striped table-bordered text-center">
         <thead>
             <tr>
+                <th></th>
                 <th>Описание</th>
                 <th>Статус</th>
                 <th>Дедлайн</th>
@@ -18,6 +21,7 @@
         <tbody>
             {% for task in tasks %}
             <tr>
+                <td><input type="checkbox" name="id_list" value="{{ task.id }}" class="task-checkbox"></td>
                 <td>{{ task.title }}</td>
                 <td>{{ task.status }}</td>
                 <td>{{ task.deadline }}</td>
@@ -29,11 +33,17 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4">Нет данных</td>
+                <td colspan="5">Нет данных</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+        <div>
+            <button type="submit" class="btn btn-danger">Удалить выбранные</button>
+        </div>
+
+        </form>
 </div>
 {% endblock %}
 

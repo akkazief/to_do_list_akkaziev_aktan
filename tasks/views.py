@@ -5,6 +5,13 @@ from tasks.forms import TaskForm
 
 
 def tasks(request):
+    if request.method == 'POST':
+        id_list = request.POST.getlist('id_list')
+        if id_list:
+            tasks = Task.objects.filter(id__in=id_list)
+            tasks.delete()
+            return redirect('main')
+
     tasks = Task.objects.all()
     context = {'tasks': tasks}
     return render(request, 'tasks/tasks.html', context)
