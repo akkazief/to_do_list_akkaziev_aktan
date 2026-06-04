@@ -23,6 +23,7 @@
                 <td>{{ task.deadline }}</td>
                 <td>
                     <a href="{% url 'details' task.id %}" class="text-decoration-none text-primary">Подробнее</a> /
+                     <a href="{% url 'update_task' task.id %}" class="text-decoration-none text-success">Изменить </a>/
                     <a href="{% url 'delete_task' task.id %}" class="text-decoration-none text-danger">Удалить</a>
                 </td>
             </tr>
