@@ -35,7 +35,7 @@ def update_task(request, pk):
             return redirect('details', pk=task.pk)
     else:
         form = TaskForm(instance=task)
-    return render(request, 'tasks/update_task.html', {'form': form, 'task': task})
+    return render(request, 'tasks/task_update.html', {'form': form, 'task': task})
 
 
 def delete_task(request, pk):
