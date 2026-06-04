@@ -9,6 +9,13 @@ def tasks(request):
     context = {'tasks': tasks}
     return render(request, 'tasks/tasks.html', context)
 
+
+def details(request, *args, pk, **kwargs):
+    task = get_object_or_404(Task, pk=pk)
+    context = {'task': task}
+    return render(request, "tasks/details.html", context)
+
+
 def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -19,12 +26,21 @@ def create_task(request):
         form = TaskForm()
     return render(request, 'tasks/create_task.html', {'form': form})
 
-def delete_task(request, pk):
-    task = Task.objects.get(id=pk)
-    task.delete()
-    return redirect('main')
-
-def details(request, *args, pk, **kwargs):
+def update_task(request, pk):
     task = get_object_or_404(Task, pk=pk)
-    context = {'task': task}
-    return render(request, "tasks/details.html", context)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('details', pk=task.pk)
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'tasks/update_task.html', {'form': form, 'task': task})
+
+
+def delete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('main')
+    return render(request, 'tasks/delete_task.html', {'task': task})
